@@ -4,8 +4,10 @@ describe('akeero', () => {
 
   before(async () => {
     await cy.task("db:drop")
-    await cy.task("db:seed")
-
+    await cy.task("db:seed", {
+      fixtureFile: "akeero",
+      testName: "test1"
+    })
     await cy.visit('https://demo.localhost')
   })
 
