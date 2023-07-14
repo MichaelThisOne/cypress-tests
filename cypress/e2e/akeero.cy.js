@@ -3,27 +3,28 @@ describe('akeero', () => {
   const defaultTimeout = 3000
 
   before(async () => {
-    // cy.task("db:drop")
-    // cy.task("db:seed")
+    await cy.task("db:drop")
+    await cy.task("db:seed")
 
-    cy.visit('https://demo.localhost')
+    await cy.visit('https://demo.localhost')
   })
-  async function recursivelyReloadPage(reloadCount) {
+
+  const recursivelyReloadPage = async (reloadCount) => {
     console.log({ reloadCount })
     if (reloadCount === 0) {
-      return; // Base case: stop recursion when reloadCount reaches 0
+      return
     }
 
-    await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait for 1 second
-    cy.reload(); // Reload the page
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+    cy.reload()
 
-    await recursivelyReloadPage(reloadCount - 1); // Recursively call the function with decremented reloadCount
+    await recursivelyReloadPage(reloadCount - 1)
   }
 
-
   it('test', async () => {
-    const reloadCount = 10;
-    await recursivelyReloadPage(reloadCount);
+    const reloadCount = 2
+    await recursivelyReloadPage(reloadCount)
+    cy.visit()
 
 
   })

@@ -45,10 +45,12 @@ module.exports = defineConfig({
             const db = client.db(dbName)
             const companyCollection = db.collection("companies")
             const projectCollection = db.collection("projects")
+            const conversionCollection = db.collection("conversions")
             const variationCollection = db.collection("variations")
         
             const companyData = { name: "Cypress Test Company", }
             const result = await companyCollection.insertOne(companyData)
+            // const result = await project.insertOne(companyData)
             console.log(result)
         
             console.log("Record added:", result.insertedId)
