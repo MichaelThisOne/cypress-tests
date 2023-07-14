@@ -12,7 +12,6 @@ describe('akeero', () => {
   })
 
   const recursivelyReloadPage = async (reloadCount) => {
-    console.log({ reloadCount })
     if (reloadCount === 0) {
       return
     }
@@ -26,9 +25,8 @@ describe('akeero', () => {
   it('test', async () => {
     const reloadCount = 2
     await recursivelyReloadPage(reloadCount)
-    cy.visit()
 
-
+    return true
   })
 
   // context('with a checked task', () => {
