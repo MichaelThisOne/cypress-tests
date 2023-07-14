@@ -1,0 +1,14 @@
+{
+  "name": "cypress-tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:MichaelThisOne/cypress-tests.git",
+  "author": "Michael Perju <michael@this.one>",
+  "license": "MIT",
+  "dependencies": {
+    "cypress": "^12.17.1"
+  },
+  "scripts":{
+    "start": "yarn run cypress open"
+  }
+}
