@@ -6,9 +6,11 @@
   "author": "Michael Perju <michael@this.one>",
   "license": "MIT",
   "dependencies": {
-    "cypress": "^12.17.1"
+    "cypress": "^12.17.1",
+    "mongodb": "^5.7.0"
   },
-  "scripts":{
-    "start": "yarn run cypress open"
-  }
+  "scripts": {
+    "cypress": "./node_modules/.bin/cypress open"
+  },
+  "devDependencies": {}
 }
