@@ -1,0 +1,1 @@
+{"_id":{"$oid":"64b53ab739d56fa9c4c628a0"},"type":"purchase","projectId":{"$oid":"64b53ab539d56fa9c4c6289a"},"createdAt":{"$date":"2023-07-17T12:57:27.951Z"},"updatedAt":{"$date":"2023-07-17T12:57:27.951Z"},"__v":0}
