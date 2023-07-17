@@ -1,3 +1,94 @@
-{"_id":{"$oid":"64b53b0c7b2a45ff5ae580ae"},"isBaseline":true,"projectId":{"$oid":"64b53ab539d56fa9c4c6289a"},"__v":0,"createdAt":{"$date":"2023-07-17T12:58:52.288Z"},"json":[{"textContent":"Convert More Visitors into Loyal Customers","convertedCssSelector":"html > body > main > div > div > div > div:nth-child(2) > div > h2","originalContent":"Convert More Visitors into Loyal Customers","xpath":"/html/body/main/div/div/div/div[2]/div/h2"}],"tags":[],"updatedAt":{"$date":"2023-07-17T13:06:24.887Z"}}
-{"_id":{"$oid":"64b53b0c39d56fa9c4c628bc"},"json":[{"textContent":"Learn How To Turbocharge Your Store","convertedCssSelector":"html > body > main > div > div > div > div:nth-child(2) > div > h2","originalContent":"Convert More Visitors into Loyal Customers","xpath":"/html/body/main/div/div/div/div[2]/div/h2"}],"projectId":{"$oid":"64b53ab539d56fa9c4c6289a"},"tags":["country=UK"],"isBaseline":false,"createdAt":{"$date":"2023-07-17T12:58:52.321Z"},"updatedAt":{"$date":"2023-07-17T13:05:16.838Z"},"__v":0}
-{"_id":{"$oid":"64b53cd039d56fa9c4c62932"},"json":[{"textContent":"Convert More Visitors into Loyal Customers","convertedCssSelector":"html > body > main > div > div > div > div:nth-child(2) > div > h2","originalContent":"Convert More Visitors into Loyal Customers","xpath":"/html/body/main/div/div/div/div[2]/div/h2"}],"projectId":{"$oid":"64b53ab539d56fa9c4c6289a"},"tags":["country=UK"],"isBaseline":false,"createdAt":{"$date":"2023-07-17T13:06:24.915Z"},"updatedAt":{"$date":"2023-07-17T13:06:35.573Z"},"__v":0}
+[{
+  "_id": {
+    "$oid": "64b5481b2fd32342c0a00dd1"
+  },
+  "projectId": {
+    "$oid": "64b5481b2fd32342c0a00dd0"
+  },
+  "json": [
+    {
+      "textContent": "Devs wanna dev.",
+      "convertedCssSelector": "html > body > div:nth-child(4) > div > div:nth-child(2) > div > h1",
+      "originalContent": "Devs wanna dev.",
+      "xpath": "/html/body/div[4]/div/div[2]/div/h1"
+    },
+    {
+      "textContent": "You didn’t become a coder to spend your time setting everything up. Our\n            lo-config code is 10x faster, safer, and works out\n            of the box.",
+      "convertedCssSelector": "html > body > div:nth-child(4) > div > div:nth-child(2) > div > h2",
+      "originalContent": "You didn’t become a coder to spend your time setting everything up. Our\n            lo-config code is 10x faster, safer, and works out\n            of the box.",
+      "xpath": "/html/body/div[4]/div/div[2]/div/h2"
+    }
+  ],
+  "type": "baseline",
+  "tags": []
+},
+{
+  "_id": {
+    "$oid": "64b5481b2fd32342c0a00dd2"
+  },
+  "projectId": {
+    "$oid": "64b5481b2fd32342c0a00dd0"
+  },
+  "json": [
+    {
+      "textContent": "Devs wanna dev.",
+      "convertedCssSelector": "html > body > div:nth-child(4) > div > div:nth-child(2) > div > h1",
+      "originalContent": "Devs wanna dev.",
+      "xpath": "/html/body/div[4]/div/div[2]/div/h1"
+    },
+    {
+      "textContent": "You didn’t become a coder to spend your time setting everything up. Our\n            lo-config code is 10x faster, safer, and works out\n            of the box.",
+      "convertedCssSelector": "html > body > div:nth-child(4) > div > div:nth-child(2) > div > h2",
+      "originalContent": "You didn’t become a coder to spend your time setting everything up. Our\n            lo-config code is 10x faster, safer, and works out\n            of the box.",
+      "xpath": "/html/body/div[4]/div/div[2]/div/h2"
+    }
+  ],
+  "type": "anomaly",
+  "tags": []
+},
+{
+  "_id": {
+    "$oid": "64b5481b2fd32342c0a00dd3"
+  },
+  "projectId": {
+    "$oid": "64b5481b2fd32342c0a00dd0"
+  },
+  "json": [
+    {
+      "textContent": "Header 1",
+      "convertedCssSelector": "html > body > div:nth-child(4) > div > div:nth-child(2) > div > h1",
+      "originalContent": "Devs wanna dev.",
+      "xpath": "/html/body/div[4]/div/div[2]/div/h1"
+    },
+    {
+      "textContent": "Subheader 1",
+      "convertedCssSelector": "html > body > div:nth-child(4) > div > div:nth-child(2) > div > h2",
+      "originalContent": "You didn’t become a coder to spend your time setting everything up. Our\n            lo-config code is 10x faster, safer, and works out\n            of the box.",
+      "xpath": "/html/body/div[4]/div/div[2]/div/h2"
+    }
+  ],
+  "tags": []
+},
+{
+  "_id": {
+    "$oid": "64b5481b2fd32342c0a00dd4"
+  },
+  "projectId": {
+    "$oid": "64b5481b2fd32342c0a00dd0"
+  },
+  "json": [
+    {
+      "textContent": "Header 2",
+      "convertedCssSelector": "html > body > div:nth-child(4) > div > div:nth-child(2) > div > h1",
+      "originalContent": "Devs wanna dev.",
+      "xpath": "/html/body/div[4]/div/div[2]/div/h1"
+    },
+    {
+      "textContent": "Subheader 2",
+      "convertedCssSelector": "html > body > div:nth-child(4) > div > div:nth-child(2) > div > h2",
+      "originalContent": "You didn’t become a coder to spend your time setting everything up. Our\n            lo-config code is 10x faster, safer, and works out\n            of the box.",
+      "xpath": "/html/body/div[4]/div/div[2]/div/h2"
+    }
+  ],
+  "tags": []
+}]

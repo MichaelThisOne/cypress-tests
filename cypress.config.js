@@ -8,18 +8,48 @@ const fs = require("fs")
 const connectionString = "mongodb+srv://gro-dev:vYBUGp6MNqkGVNfY@gro.d2su6ry.mongodb.net/thisone-dev?retryWrites=true&w=majority"
 const dbName = "thisone-dev"
 
+
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
 
-      on('task', {
-        async 'db:drop'() {
+      let client = null
 
-          console.log(`Dropping database: ${dbName}`)
-          const client = new MongoClient(connectionString, { useUnifiedTopology: true })
+      const connect = async () => {
+        client = new MongoClient(connectionString, { useUnifiedTopology: true })
+
+        try {
+          await client.connect()
+
+          console.log("Connected")
+          return true
+        } catch (error) {
+          console.log("Error when connecting:", error)
+          return undefined
+        }
+      }
+
+      on('task', {
+        async 'db:connect'() {
+          console.log(`Connecting to the databse`)
+          client = new MongoClient(connectionString, { useUnifiedTopology: true })
 
           try {
             await client.connect()
+            console.log("Connected")
+            return true
+          } catch (error) {
+            console.log("Error when connecting:", error)
+            return undefined
+          }
+        },
+
+        async 'db:drop'() {
+          if (!client) {
+            await connect()
+          }
+          console.log(`Dropping database: ${dbName}`)
+          try {
             const db = client.db(dbName)
 
             const companyCollection = db.collection("companies")
@@ -36,77 +66,59 @@ module.exports = defineConfig({
             await variationViewCollection.deleteMany({})
             await variationConversionCollection.deleteMany({})
 
-            console.log("Collections dropped")
+            return true
           } catch (error) {
             console.log("Error adding record:", error)
-          } finally {
-            await client.close()
-            return false
-          }
-
+            return undefined
+          } 
         },
 
-        async 'db:seed'({ fixtureFile, testName }) {
-
-          const data = require(`./cypress/fixtures/${fixtureFile}.js`)
-          const test = data?.[testName]
-
-          if (!test) {
-            console.log(`No ${testName} test found in cypress/fixtures/${fixtureFile}`)
-            return
+        async 'db:get-variation-views'() {
+          if (!client) {
+            await connect()
           }
-
-          console.log(`Seeding database: ${dbName}`)
-          const client = new MongoClient(connectionString, { useUnifiedTopology: true })
-
           try {
-            await client.connect()
             const db = client.db(dbName)
-
-            if (test?.companies) {
-              for (let company of test.companies) {
-                await createCompany(company, db)
-              }
-            }
+            const variationViews = db.collection("variation-views")
+            const variationViewsNum = await variationViews.countDocuments()
+            console.log({ variationViewsNum })
+            return variationViewsNum
 
           } catch (error) {
-            console.log("Error adding record:", error)
-          } finally {
-            await client.close()
+            console.log("Error retrieving variation views:", error)
+            return undefined
           }
-
-          return true
         },
 
         async 'db:load-json'({ jsonDir, }) {
 
-          const url = 'mongodb+srv://gro-dev:vYBUGp6MNqkGVNfY@gro.d2su6ry.mongodb.net/thisone-dev?retryWrites=true&w=majority'
+          if (!client) {
+            await connect()
+          }
           const dbName = 'thisone-dev'
-          const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true })
           const collections = ['companies', 'projects', 'variations', 'conversions']
 
           const convertIds = (data) => {
             return data.map(item => {
-              if (item._id && item._id.$oid) {
-                item._id = new ObjectId(item._id.$oid)
+              for (key of Object.keys(item)) {
+                if (item?.[key]?.$oid) {
+                  item[key] = new ObjectId(item[key].$oid)
+                }
               }
+
               return item
             })
           }
 
           try {
-            // Connect the client to the server
-            await client.connect()
             console.log("Connected successfully to server")
             const db = client.db(dbName)
 
             for (let collectionName of collections) {
 
               const filePath = `./db_dump/${jsonDir}/${collectionName}.json`
-              const rawData = fs.readFileSync(filePath, 'utf8')
-              const lines = rawData.split('\n').filter(line => line)
-              let data = lines.map(line => JSON.parse(line))
-
+              const fileContent = fs.readFileSync(filePath, 'utf8')
+              let data = JSON.parse(fileContent)
               // Convert any $oid strings into ObjectId instances
               data = convertIds(data)
 
@@ -115,20 +127,39 @@ module.exports = defineConfig({
               const result = await collection.insertMany(data)
               console.log(`${result.insertedCount} documents were inserted into ${collectionName}`)
             }
+            return true
           }
           catch (e) {
             console.log(e)
+            return undefined
           }
-          finally {
-            // Ensures that the client will close when you finish/error
-            await client.close()
-          }
-
-          return true
         },
 
+        // async 'db:seed'({ fixtureFile, testName }) {
 
+        //   const data = require(`./cypress/fixtures/${fixtureFile}.js`)
+        //   const test = data?.[testName]
 
+        //   if (!test) {
+        //     console.log(`No ${testName} test found in cypress/fixtures/${fixtureFile}`)
+        //     return
+        //   }
+
+        //   console.log(`Seeding database: ${dbName}`)
+
+        //   try {
+        //     const db = client.db(dbName)
+
+        //     if (test?.companies) {
+        //       for (let company of test.companies) {
+        //         await createCompany(company, db)
+        //       }
+        //     }
+
+        //   } catch (error) {
+        //     console.log("Error adding record:", error)
+        //   }
+        // },
 
       })
     },
