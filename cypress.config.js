@@ -30,19 +30,6 @@ module.exports = defineConfig({
       }
 
       on('task', {
-        async 'db:connect'() {
-          console.log(`Connecting to the databse`)
-          client = new MongoClient(connectionString, { useUnifiedTopology: true })
-
-          try {
-            await client.connect()
-            console.log("Connected")
-            return true
-          } catch (error) {
-            console.log("Error when connecting:", error)
-            return undefined
-          }
-        },
 
         async 'db:drop'() {
           if (!client) {
@@ -73,19 +60,20 @@ module.exports = defineConfig({
           } 
         },
 
-        async 'db:get-variation-views'() {
+        async 'db:get'() {
           if (!client) {
             await connect()
           }
           try {
             const db = client.db(dbName)
             const variationViews = db.collection("variation-views")
+            const variationConversions = db.collection("variation-conversions")
             const variationViewsNum = await variationViews.countDocuments()
-            console.log({ variationViewsNum })
-            return variationViewsNum
+            const variationConversionsNum = await variationConversions.countDocuments()
+            return { variationViewsNum, variationConversionsNum }
 
           } catch (error) {
-            console.log("Error retrieving variation views:", error)
+            console.log("Error retrieving database information:", error)
             return undefined
           }
         },
@@ -158,6 +146,23 @@ module.exports = defineConfig({
 
         //   } catch (error) {
         //     console.log("Error adding record:", error)
+        //   }
+        // },
+
+         // async 'db:get-variation-views'() {
+        //   if (!client) {
+        //     await connect()
+        //   }
+        //   try {
+        //     const db = client.db(dbName)
+        //     const variationViews = db.collection("variation-views")
+        //     const variationViewsNum = await variationViews.countDocuments()
+        //     console.log({ variationViewsNum })
+        //     return variationViewsNum
+
+        //   } catch (error) {
+        //     console.log("Error retrieving variation views:", error)
+        //     return undefined
         //   }
         // },
 

@@ -3,7 +3,7 @@ describe('akeero', () => {
   const defaultTimeout = 3000
 
   beforeEach(() => {
-    cy.task("db:drop")
+    cy.task("db:drop", null, { timeout: defaultTimeout })
     // await cy.task("db:seed", {
     //   fixtureFile: "akeero",
     //   testName: "test1",
@@ -11,7 +11,7 @@ describe('akeero', () => {
 
     cy.task("db:load-json", {
       jsonDir: "akeero-url-conversion",
-    })
+    }, { timeout: defaultTimeout })
 
     cy.clearAllCookies()
     cy.window().then((win) => {
@@ -25,11 +25,14 @@ describe('akeero', () => {
   })
 
 
-  it('Visiting the akeero page once should record one view', () => {
+  it(`
+    Visiting akeero once.
+    Should record 1 view.
+  `, () => {
     cy.wait(1000)
 
-    cy.task("db:get-variation-views").then(numViews => {
-      expect(numViews).to.equal(1)
+    cy.task("db:get", null, { timeout: defaultTimeout }).then(data => {
+      expect(data?.variationViewsNum).to.equal(1)
     })
   })
 
@@ -44,8 +47,8 @@ describe('akeero', () => {
 
     cy.wait(1000)
 
-    cy.task("db:get-variation-views").then(numViews => {
-      expect(numViews).to.equal(1)
+    cy.task("db:get", null, { timeout: defaultTimeout }).then(data => {
+      expect(data?.variationViewsNum).to.equal(1)
     })
   })
 
@@ -60,8 +63,8 @@ describe('akeero', () => {
     cy.reload()
     cy.wait(1000)
 
-    cy.task("db:get-variation-views").then(numViews => {
-      expect(numViews).to.equal(2)
+    cy.task("db:get", null, { timeout: defaultTimeout }).then(data => {
+      expect(data?.variationViewsNum).to.equal(2)
     })
 
   })
@@ -79,8 +82,25 @@ describe('akeero', () => {
     cy.wait(1000)
 
 
-    cy.task("db:get-variation-views").then(numViews => {
-      expect(numViews).to.equal(3)
+    cy.task("db:get", null, { timeout: defaultTimeout }).then(data => {
+      expect(data?.variationViewsNum).to.equal(3)
+    })
+  })
+
+
+  it(`
+  Visiting akeero once.
+  Go to conversion page.
+  Should record 1 view.
+  Should record 1 conversion.
+`, () => {
+    cy.visit("https://demo.localhost/conversion")
+    cy.wait(1000)
+
+    cy.task("db:get").then(data => {
+
+      expect(data?.variationViewsNum).to.equal(1)
+      expect(data?.variationConversionsNum).to.equal(1)
     })
   })
 })
