@@ -18,6 +18,9 @@ describe('akeero', () => {
       win.console.clear()
     })
 
+
+    cy.viewport(1000, 1200)
+
     cy.visit('https://demo.localhost')
   })
 
