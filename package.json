@@ -10,7 +10,9 @@
     "mongodb": "^5.7.0"
   },
   "scripts": {
-    "cypress": "./node_modules/.bin/cypress open"
+    "cypress:open": "./node_modules/.bin/cypress open",
+    "cypress:run": "./node_modules/.bin/cypress run",
+    "cypress": "./node_modules/.bin/cypress run --headed"
   },
   "devDependencies": {}
 }
