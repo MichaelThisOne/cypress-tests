@@ -66,12 +66,15 @@ module.exports = defineConfig({
           }
           try {
             const db = client.db(dbName)
-            const variationViews = db.collection("variation-views")
-            const variationConversions = db.collection("variation-conversions")
-            const variationViewsNum = await variationViews.countDocuments()
-            const variationConversionsNum = await variationConversions.countDocuments()
-            return { variationViewsNum, variationConversionsNum }
+            const VariationView = db.collection("variation-views")
+            const VariationConversion = db.collection("variation-conversions")
 
+            const variationViewsNum = await VariationView.countDocuments()
+            const variationConversionsNum = await VariationConversion.countDocuments()
+            const variationViews = await VariationView.find({}, { variationId: 1 }).toArray()
+            const variationConversions = await VariationConversion.find({}, { variationId: 1 }).toArray()
+            
+            return { variationViewsNum, variationConversionsNum, variationConversions, variationViews }
           } catch (error) {
             console.log("Error retrieving database information:", error)
             return undefined

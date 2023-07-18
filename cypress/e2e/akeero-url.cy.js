@@ -21,7 +21,7 @@ describe('akeero', () => {
 
     cy.viewport(1000, 1200)
 
-    cy.visit('https://demo.localhost')
+    cy.visit('https://demo.localhost/url-landing-page.html')
   })
 
 
@@ -94,7 +94,7 @@ describe('akeero', () => {
   Should record 1 view.
   Should record 1 conversion.
 `, () => {
-    cy.visit("https://demo.localhost/conversion")
+    cy.visit("https://demo.localhost/url-conversion.html")
     cy.wait(1000)
 
     cy.task("db:get").then(data => {

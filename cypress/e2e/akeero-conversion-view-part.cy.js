@@ -20,7 +20,7 @@ describe('akeero', () => {
 
     cy.viewport(1000, 1200)
 
-    cy.visit('https://demo.localhost')
+    cy.visit('https://demo.localhost/shopify-landing-page.html')
   })
 
 
@@ -83,22 +83,6 @@ describe('akeero', () => {
 
     cy.task("db:get", null, { timeout: defaultTimeout }).then(data => {
       expect(data?.variationViewsNum).to.equal(3)
-    })
-  })
-
-  it(`
-  Visiting akeero once.
-  Go to conversion page.
-  Should record 1 view.
-  Should record 1 conversion.
-`, () => {
-    cy.visit("https://demo.localhost/conversion")
-    cy.wait(1000)
-
-    cy.task("db:get").then(data => {
-
-      expect(data?.variationViewsNum).to.equal(1)
-      expect(data?.variationConversionsNum).to.equal(1)
     })
   })
 })
