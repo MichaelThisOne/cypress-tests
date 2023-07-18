@@ -57,7 +57,7 @@ module.exports = defineConfig({
           } catch (error) {
             console.log("Error adding record:", error)
             return undefined
-          } 
+          }
         },
 
         async 'db:get'() {
@@ -149,7 +149,7 @@ module.exports = defineConfig({
         //   }
         // },
 
-         // async 'db:get-variation-views'() {
+        // async 'db:get-variation-views'() {
         //   if (!client) {
         //     await connect()
         //   }
@@ -169,4 +169,5 @@ module.exports = defineConfig({
       })
     },
   },
+  chromeWebSecurity: false
 })
