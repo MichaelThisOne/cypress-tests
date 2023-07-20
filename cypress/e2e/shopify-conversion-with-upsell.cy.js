@@ -31,7 +31,6 @@ describe('akeero', () => {
   })
 
   // WITH COOKIES
-
   it(`
   Visit shopify landing page.
   Visiting shopify conversion page once.
