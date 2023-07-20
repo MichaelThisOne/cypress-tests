@@ -173,6 +173,115 @@ describe('akeero', () => {
     })
   })
 
+  it.only(`
+    Visit shopify landing page.
+    Visiting shopify conversion page.
+
+    If variant 1 - converge with probability 0.75
+    If variant 2 - converge with probability 0.75
+
+
+  `, () => {
+    cy.task("db:drop", null, { timeout: defaultTimeout })
+    // await cy.task("db:seed", {
+    //   fixtureFile: "akeero",
+    //   testName: "test1",
+    // })
+
+    cy.task("db:load-json", {
+      jsonDir: "akeero-shopify-conversion",
+    }, { timeout: defaultTimeout })
+
+    for (let i = 0; i < 1000; i++) {
+
+      cy.visit('https://demo.localhost/shopify-landing-page.html')
+
+      cy.getCookie("gro-view-id").then(conversionCookie => {
+        const variationSelected = conversionCookie.value
+
+        const isVariation1Selected = variationSelected === "64b5481b2fd32342c0a00dd1"
+        // const isAnomalySelected = variationSelected==="64b5481b2fd32342c0a00dd2"
+        const isVariation2Selected = variationSelected === "64b5481b2fd32342c0a00dd3"
+        const isVariation3Selected = variationSelected === "64b5481b2fd32342c0a00dd4"
+
+        let randomNumber = Math.random()
+
+        if (isVariation1Selected) {
+          const shopifyOrder = {
+            order: {
+              ...ShopifyGlobal.order,
+              id: i, totalPrice: 3,
+
+            }
+          }
+
+          if (randomNumber <= 0.03) {
+            cy.visit('https://demo.localhost/shopify-conversion.html', {
+              onBeforeLoad: (win) => {
+                win.Shopify = shopifyOrder
+                console.log({CONVERSION:1, winShopify: win.Shopify})
+              },
+            })
+            cy.wait(300)
+          }
+
+        } else if (isVariation2Selected) {
+          const shopifyOrder = {
+            order: {
+              ...ShopifyGlobal.order,
+              id: i, totalPrice: 2,
+
+            }
+          }
+
+          if (randomNumber <= 0.02) {
+            cy.visit('https://demo.localhost/shopify-conversion.html', {
+              onBeforeLoad: (win) => {
+                win.Shopify = shopifyOrder
+                console.log({CONVERSION:2, winShopify: win.Shopify})
+              },
+            })
+            cy.wait(300)
+
+          }
+
+
+        } else if (isVariation3Selected) {
+          const shopifyOrder = {
+            order: {
+              ...ShopifyGlobal.order,
+              id: i, totalPrice: 1,
+            }
+          }
+
+          if (randomNumber <= 0.01) {
+            cy.visit('https://demo.localhost/shopify-conversion.html', {
+              onBeforeLoad: (win) => {
+                win.Shopify = shopifyOrder
+                console.log({CONVERSION:3, winShopify: win.Shopify})
+
+              },
+            })
+            cy.wait(300)
+
+          }
+        }
+      })
+      cy.clearAllCookies()
+    }
+
+    cy.wait(1000)
+
+    cy.task("db:get", null, { timeout: defaultTimeout }).then(data => {
+      expect(data?.variationViewsNum).to.equal(1000)
+      // expect(data?.variationConversionsNum).to.equal(0)
+    })
+
+
+
+
+  })
+
 })
 
 
