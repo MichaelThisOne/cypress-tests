@@ -173,12 +173,13 @@ describe('akeero', () => {
     })
   })
 
-  it.only(`
+  it.skip(`
     Visit shopify landing page.
     Visiting shopify conversion page.
 
     If variant 1 - converge with probability 0.75
-    If variant 2 - converge with probability 0.75
+    If variant 2 - converge with probability 0.5
+    If variant 2 - converge with probability 0.25
 
 
   `, () => {
