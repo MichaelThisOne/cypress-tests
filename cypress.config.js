@@ -5,8 +5,8 @@ const {
 } = require("./lib/mongo")
 const fs = require("fs")
 
-const connectionString = "mongodb+srv://gro-dev:vYBUGp6MNqkGVNfY@gro.d2su6ry.mongodb.net/thisone-dev?retryWrites=true&w=majority"
-const dbName = "thisone-dev"
+const connectionString = "mongodb+srv://gro-local:v9J975haSBboZv66@gro.d2su6ry.mongodb.net/gro-local?retryWrites=true&w=majority"
+const dbName = "gro-local"
 
 
 module.exports = defineConfig({
@@ -86,7 +86,7 @@ module.exports = defineConfig({
           if (!client) {
             await connect()
           }
-          const dbName = 'thisone-dev'
+          const dbName = 'gro-local'
           const collections = ['companies', 'projects', 'variations', 'conversions']
 
           const convertIds = (data) => {

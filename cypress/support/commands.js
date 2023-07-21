@@ -1,7 +1,7 @@
 // const { MongoClient } = require("mongodb")
 
-// const connectionString = "mongodb+srv://gro-dev:vYBUGp6MNqkGVNfY@gro.d2su6ry.mongodb.net/thisone-dev?retryWrites=true&w=majority"
-// const dbName = "thisone-dev"
+// const connectionString = "mongodb+srv://gro-local:v9J975haSBboZv66@gro.d2su6ry.mongodb.net/gro-local?retryWrites=true&w=majority"
+// const dbName = "gro-local"
 
 // Cypress.Commands.add("dropDatabase", async () => {
 //   cy.log(`Dropping database: ${dbName}`);
