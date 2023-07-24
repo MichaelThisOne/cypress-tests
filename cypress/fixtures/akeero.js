@@ -16,13 +16,13 @@ const fixtures = {
                                 dbRecord: {
                                     "json": [
                                         {
-                                            "textContent": "Devs wanna dev.",
+                                            "innerHTML": "Devs wanna dev.",
                                             "convertedCssSelector": "html > body > div:nth-child(4) > div > div:nth-child(2) > div > h1",
                                             "originalContent": "Devs wanna dev.",
                                             "xpath": "/html/body/div[4]/div/div[2]/div/h1"
                                         },
                                         {
-                                            "textContent": "You didn’t become a coder to spend your time setting everything up. Our\n            lo-config code is 10x faster, safer, and works out\n            of the box.",
+                                            "innerHTML": "You didn’t become a coder to spend your time setting everything up. Our\n            lo-config code is 10x faster, safer, and works out\n            of the box.",
                                             "convertedCssSelector": "html > body > div:nth-child(4) > div > div:nth-child(2) > div > h2",
                                             "originalContent": "You didn’t become a coder to spend your time setting everything up. Our\n            lo-config code is 10x faster, safer, and works out\n            of the box.",
                                             "xpath": "/html/body/div[4]/div/div[2]/div/h2"
@@ -36,13 +36,13 @@ const fixtures = {
                                 dbRecord: {
                                     "json": [
                                         {
-                                            "textContent": "Devs wanna dev.",
+                                            "innerHTML": "Devs wanna dev.",
                                             "convertedCssSelector": "html > body > div:nth-child(4) > div > div:nth-child(2) > div > h1",
                                             "originalContent": "Devs wanna dev.",
                                             "xpath": "/html/body/div[4]/div/div[2]/div/h1"
                                         },
                                         {
-                                            "textContent": "You didn’t become a coder to spend your time setting everything up. Our\n            lo-config code is 10x faster, safer, and works out\n            of the box.",
+                                            "innerHTML": "You didn’t become a coder to spend your time setting everything up. Our\n            lo-config code is 10x faster, safer, and works out\n            of the box.",
                                             "convertedCssSelector": "html > body > div:nth-child(4) > div > div:nth-child(2) > div > h2",
                                             "originalContent": "You didn’t become a coder to spend your time setting everything up. Our\n            lo-config code is 10x faster, safer, and works out\n            of the box.",
                                             "xpath": "/html/body/div[4]/div/div[2]/div/h2"
@@ -56,13 +56,13 @@ const fixtures = {
                                 dbRecord: {
                                     "json": [
                                         {
-                                            "textContent": "Header 1",
+                                            "innerHTML": "Header 1",
                                             "convertedCssSelector": "html > body > div:nth-child(4) > div > div:nth-child(2) > div > h1",
                                             "originalContent": "Devs wanna dev.",
                                             "xpath": "/html/body/div[4]/div/div[2]/div/h1"
                                         },
                                         {
-                                            "textContent": "Subheader 1",
+                                            "innerHTML": "Subheader 1",
                                             "convertedCssSelector": "html > body > div:nth-child(4) > div > div:nth-child(2) > div > h2",
                                             "originalContent": "You didn’t become a coder to spend your time setting everything up. Our\n            lo-config code is 10x faster, safer, and works out\n            of the box.",
                                             "xpath": "/html/body/div[4]/div/div[2]/div/h2"
@@ -75,13 +75,13 @@ const fixtures = {
                                 dbRecord: {
                                     "json": [
                                         {
-                                            "textContent": "Header 2",
+                                            "innerHTML": "Header 2",
                                             "convertedCssSelector": "html > body > div:nth-child(4) > div > div:nth-child(2) > div > h1",
                                             "originalContent": "Devs wanna dev.",
                                             "xpath": "/html/body/div[4]/div/div[2]/div/h1"
                                         },
                                         {
-                                            "textContent": "Subheader 2",
+                                            "innerHTML": "Subheader 2",
                                             "convertedCssSelector": "html > body > div:nth-child(4) > div > div:nth-child(2) > div > h2",
                                             "originalContent": "You didn’t become a coder to spend your time setting everything up. Our\n            lo-config code is 10x faster, safer, and works out\n            of the box.",
                                             "xpath": "/html/body/div[4]/div/div[2]/div/h2"

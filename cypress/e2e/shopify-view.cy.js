@@ -20,7 +20,6 @@ describe('akeero', () => {
 
     cy.viewport(1000, 1200)
 
-    cy.visit('https://demo.localhost/shopify-landing-page.html')
   })
 
 
@@ -28,6 +27,15 @@ describe('akeero', () => {
     Visiting akeero once.
     Should record 1 view.
   `, () => {
+
+    cy.visit('https://demo.localhost/shopify-landing-page.html')
+    const textOptions = ["Devs wanna dev.", "Header 1", "Header 2"];
+    cy.get('[cypress-id="header"]').then(($element) => {
+      const text = $element.text();
+      expect(textOptions).to.include(text)
+    })
+
+
     cy.wait(1000)
 
     cy.task("db:get", null, { timeout: defaultTimeout }).then(data => {
@@ -40,6 +48,12 @@ describe('akeero', () => {
     Don't clear the view cookie.
     Should record 1 view.
   `, () => {
+    cy.visit('https://demo.localhost/shopify-landing-page.html')
+    const textOptions = ["Devs wanna dev.", "Header 1", "Header 2"];
+    cy.get('[cypress-id="header"]').then(($element) => {
+      const text = $element.text();
+      expect(textOptions).to.include(text)
+    })
 
     cy.reload()
     cy.reload()
@@ -57,6 +71,12 @@ describe('akeero', () => {
     Clear all cookies.
     Should record 2 views.
   `, () => {
+    cy.visit('https://demo.localhost/shopify-landing-page.html')
+    const textOptions = ["Devs wanna dev.", "Header 1", "Header 2"];
+    cy.get('[cypress-id="header"]').then(($element) => {
+      const text = $element.text();
+      expect(textOptions).to.include(text)
+    })
 
     cy.clearAllCookies()
     cy.reload()
@@ -73,6 +93,12 @@ describe('akeero', () => {
   Clear all cookies each time.
   Should record 3 views.
   `, () => {
+    cy.visit('https://demo.localhost/shopify-landing-page.html')
+    const textOptions = ["Devs wanna dev.", "Header 1", "Header 2"];
+    cy.get('[cypress-id="header"]').then(($element) => {
+      const text = $element.text();
+      expect(textOptions).to.include(text)
+    })
 
     cy.clearAllCookies()
     cy.reload()

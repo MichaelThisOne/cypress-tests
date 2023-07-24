@@ -9,6 +9,11 @@
     "landingPageUrl": "https://demo-akeero.letsgro.ai",
     "isActive": true,
     "suggestions": [],
-    "priorOrderValue": 10
+    "banditParams": {
+      "muPrior": 10,
+      "tauPrior": 1,
+      "alphaPrior": 3,
+      "betaPrior": 97
+    }
   }
 ]
