@@ -14,6 +14,13 @@ describe('akeero', () => {
     }
   }
 
+  const headerOptions = ["Devs wanna dev.", "Header 1", "Header 2"];
+  const subheaderOptions = [
+    "You didn’t become a coder to spend your time setting everything up. Our lo-config code is 10x faster, safer, and works out of the box.",
+    "Subheader 1",
+    "Subheader 2",
+  ]
+
   beforeEach(() => {
     cy.task("db:drop", null, { timeout: defaultTimeout })
     // await cy.task("db:seed", {
@@ -41,6 +48,17 @@ describe('akeero', () => {
 `, () => {
 
     cy.visit('https://demo.localhost/shopify-landing-page.html')
+    cy.get('[cypress-id="header"]').then(($element) => {
+      const text = $element.text();
+      expect(headerOptions).to.include(text.trim())
+    })
+    cy.get('[cypress-id="subheader"]').then(($element) => {
+      let text = $element.text()
+      text = text.replace(/\s+/g, ' ')
+
+      expect(subheaderOptions).to.include(text.trim())
+    })
+
     cy.visit('https://demo.localhost/shopify-conversion.html', {
       onBeforeLoad: (win) => {
         win.Shopify = ShopifyGlobal
@@ -78,6 +96,17 @@ describe('akeero', () => {
 `, () => {
 
     cy.visit('https://demo.localhost/shopify-landing-page.html')
+    cy.get('[cypress-id="header"]').then(($element) => {
+      const text = $element.text();
+      expect(headerOptions).to.include(text.trim())
+    })
+    cy.get('[cypress-id="subheader"]').then(($element) => {
+      let text = $element.text()
+      text = text.replace(/\s+/g, ' ')
+
+      expect(subheaderOptions).to.include(text.trim())
+    })
+
     cy.visit('https://demo.localhost/shopify-conversion.html', {
       onBeforeLoad: (win) => {
         win.Shopify = ShopifyGlobal
@@ -196,6 +225,16 @@ describe('akeero', () => {
     for (let i = 0; i < 1000; i++) {
 
       cy.visit('https://demo.localhost/shopify-landing-page.html')
+      cy.get('[cypress-id="header"]').then(($element) => {
+        const text = $element.text();
+        expect(headerOptions).to.include(text.trim())
+      })
+      cy.get('[cypress-id="subheader"]').then(($element) => {
+        let text = $element.text()
+        text = text.replace(/\s+/g, ' ')
+
+        expect(subheaderOptions).to.include(text.trim())
+      })
 
       cy.getCookie("gro-view-id").then(conversionCookie => {
         const variationSelected = conversionCookie.value
@@ -220,7 +259,7 @@ describe('akeero', () => {
             cy.visit('https://demo.localhost/shopify-conversion.html', {
               onBeforeLoad: (win) => {
                 win.Shopify = shopifyOrder
-                console.log({CONVERSION:1, winShopify: win.Shopify})
+                console.log({ CONVERSION: 1, winShopify: win.Shopify })
               },
             })
             cy.wait(300)
@@ -239,7 +278,7 @@ describe('akeero', () => {
             cy.visit('https://demo.localhost/shopify-conversion.html', {
               onBeforeLoad: (win) => {
                 win.Shopify = shopifyOrder
-                console.log({CONVERSION:2, winShopify: win.Shopify})
+                console.log({ CONVERSION: 2, winShopify: win.Shopify })
               },
             })
             cy.wait(300)
@@ -259,7 +298,7 @@ describe('akeero', () => {
             cy.visit('https://demo.localhost/shopify-conversion.html', {
               onBeforeLoad: (win) => {
                 win.Shopify = shopifyOrder
-                console.log({CONVERSION:3, winShopify: win.Shopify})
+                console.log({ CONVERSION: 3, winShopify: win.Shopify })
 
               },
             })

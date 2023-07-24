@@ -1,6 +1,12 @@
 describe('akeero', () => {
 
   const defaultTimeout = 3000
+  const headerOptions = ["Devs wanna dev.", "Header 1", "Header 2"];
+  const subheaderOptions = [
+    "You didn’t become a coder to spend your time setting everything up. Our lo-config code is 10x faster, safer, and works out of the box.",
+    "Subheader 1",
+    "Subheader 2",
+  ]
 
   beforeEach(() => {
     cy.task("db:drop", null, { timeout: defaultTimeout })
@@ -29,12 +35,16 @@ describe('akeero', () => {
   `, () => {
 
     cy.visit('https://demo.localhost/shopify-landing-page.html')
-    const textOptions = ["Devs wanna dev.", "Header 1", "Header 2"];
     cy.get('[cypress-id="header"]').then(($element) => {
       const text = $element.text();
-      expect(textOptions).to.include(text)
+      expect(headerOptions).to.include(text)
     })
+    cy.get('[cypress-id="subheader"]').then(($element) => {
+      let text = $element.text()
+      text = text.replace(/\s+/g, ' ')
 
+      expect(subheaderOptions).to.include(text)
+    })
 
     cy.wait(1000)
 
@@ -49,10 +59,10 @@ describe('akeero', () => {
     Should record 1 view.
   `, () => {
     cy.visit('https://demo.localhost/shopify-landing-page.html')
-    const textOptions = ["Devs wanna dev.", "Header 1", "Header 2"];
+    const headerOptions = ["Devs wanna dev.", "Header 1", "Header 2"];
     cy.get('[cypress-id="header"]').then(($element) => {
       const text = $element.text();
-      expect(textOptions).to.include(text)
+      expect(headerOptions).to.include(text)
     })
 
     cy.reload()
@@ -72,10 +82,16 @@ describe('akeero', () => {
     Should record 2 views.
   `, () => {
     cy.visit('https://demo.localhost/shopify-landing-page.html')
-    const textOptions = ["Devs wanna dev.", "Header 1", "Header 2"];
+    const headerOptions = ["Devs wanna dev.", "Header 1", "Header 2"];
     cy.get('[cypress-id="header"]').then(($element) => {
       const text = $element.text();
-      expect(textOptions).to.include(text)
+      expect(headerOptions).to.include(text)
+    })
+    cy.get('[cypress-id="subheader"]').then(($element) => {
+      let text = $element.text()
+      text = text.replace(/\s+/g, ' ')
+
+      expect(subheaderOptions).to.include(text)
     })
 
     cy.clearAllCookies()
@@ -94,10 +110,10 @@ describe('akeero', () => {
   Should record 3 views.
   `, () => {
     cy.visit('https://demo.localhost/shopify-landing-page.html')
-    const textOptions = ["Devs wanna dev.", "Header 1", "Header 2"];
+    const headerOptions = ["Devs wanna dev.", "Header 1", "Header 2"];
     cy.get('[cypress-id="header"]').then(($element) => {
       const text = $element.text();
-      expect(textOptions).to.include(text)
+      expect(headerOptions).to.include(text)
     })
 
     cy.clearAllCookies()
