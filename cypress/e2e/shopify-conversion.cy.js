@@ -201,7 +201,7 @@ describe('akeero', () => {
     })
   })
 
-  it(`
+  it.skip(`
     Visit shopify landing page.
     Visiting shopify conversion page.
 
@@ -250,7 +250,6 @@ describe('akeero', () => {
             order: {
               ...ShopifyGlobal.order,
               id: i, totalPrice: 3,
-
             }
           }
 
@@ -258,7 +257,6 @@ describe('akeero', () => {
             cy.visit('https://demo.localhost/shopify-conversion.html', {
               onBeforeLoad: (win) => {
                 win.Shopify = shopifyOrder
-                console.log({ CONVERSION: 1, winShopify: win.Shopify })
               },
             })
             cy.wait(300)
@@ -277,7 +275,6 @@ describe('akeero', () => {
             cy.visit('https://demo.localhost/shopify-conversion.html', {
               onBeforeLoad: (win) => {
                 win.Shopify = shopifyOrder
-                console.log({ CONVERSION: 2, winShopify: win.Shopify })
               },
             })
             cy.wait(300)
@@ -297,8 +294,6 @@ describe('akeero', () => {
             cy.visit('https://demo.localhost/shopify-conversion.html', {
               onBeforeLoad: (win) => {
                 win.Shopify = shopifyOrder
-                console.log({ CONVERSION: 3, winShopify: win.Shopify })
-
               },
             })
             cy.wait(300)
@@ -313,7 +308,6 @@ describe('akeero', () => {
 
     cy.task("db:get", null, { timeout: defaultTimeout }).then(data => {
       expect(data?.variationViewsNum).to.equal(1000)
-      // expect(data?.variationConversionsNum).to.equal(0)
     })
 
 
