@@ -86,7 +86,6 @@ describe('akeero', () => {
         expect(variationConversion?.meta?.shopify?.ordersCount).to.equal(1)
       })
     })
-
   })
 
   it(`
@@ -202,7 +201,7 @@ describe('akeero', () => {
     })
   })
 
-  it.skip(`
+  it(`
     Visit shopify landing page.
     Visiting shopify conversion page.
 

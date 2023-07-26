@@ -7,7 +7,6 @@
       "$oid": "64b546b22fd32342c0a00dc3"
     },
     "landingPageUrl": "https://demo-akeero.letsgro.ai",
-    "isActive": true,
     "suggestions": [],
     "banditParams": {
       "muPrior": 10,

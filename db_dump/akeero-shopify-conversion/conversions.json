@@ -1,9 +1,11 @@
-[{
-  "_id": {
-    "$oid": "64b5481b2fd32342c0a00dd5"
-  },
-  "projectId": {
-    "$oid": "64b5481b2fd32342c0a00dd0"
-  },
-  "type": "shopify"
-}]
+[
+  {
+    "_id": {
+      "$oid": "64b5481b2fd32342c0a00dd5"
+    },
+    "experimentId": {
+      "$oid": "64b546b22fd32342c0a00eee"
+    },
+    "type": "shopify"
+  }
+]

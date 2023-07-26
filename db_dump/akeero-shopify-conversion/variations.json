@@ -3,8 +3,8 @@
   "_id": {
     "$oid": "64b5481b2fd32342c0a00dd1"
   },
-  "projectId": {
-    "$oid": "64b5481b2fd32342c0a00dd0"
+  "experimentId": {
+    "$oid": "64b546b22fd32342c0a00eee"
   },
   "json": [
     {
@@ -27,8 +27,8 @@
   "_id": {
     "$oid": "64b5481b2fd32342c0a00dd2"
   },
-  "projectId": {
-    "$oid": "64b5481b2fd32342c0a00dd0"
+  "experimentId": {
+    "$oid": "64b546b22fd32342c0a00eee"
   },
   "json": [
     {
@@ -51,8 +51,8 @@
   "_id": {
     "$oid": "64b5481b2fd32342c0a00dd3"
   },
-  "projectId": {
-    "$oid": "64b5481b2fd32342c0a00dd0"
+  "experimentId": {
+    "$oid": "64b546b22fd32342c0a00eee"
   },
   "json": [
     {
@@ -74,8 +74,8 @@
   "_id": {
     "$oid": "64b5481b2fd32342c0a00dd4"
   },
-  "projectId": {
-    "$oid": "64b5481b2fd32342c0a00dd0"
+  "experimentId": {
+    "$oid": "64b546b22fd32342c0a00eee"
   },
   "json": [
     {

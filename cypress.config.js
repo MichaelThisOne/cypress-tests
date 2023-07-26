@@ -45,6 +45,7 @@ module.exports = defineConfig({
             const conversionCollection = db.collection("conversions")
             const variationViewCollection = db.collection("variation-views")
             const variationConversionCollection = db.collection("variation-conversions")
+            const experimentCollection = db.collection("experiments")
 
             await companyCollection.deleteMany({})
             await projectCollection.deleteMany({})
@@ -52,6 +53,7 @@ module.exports = defineConfig({
             await conversionCollection.deleteMany({})
             await variationViewCollection.deleteMany({})
             await variationConversionCollection.deleteMany({})
+            await experimentCollection.deleteMany({})
 
             return true
           } catch (error) {
@@ -87,7 +89,7 @@ module.exports = defineConfig({
             await connect()
           }
           const dbName = 'gro-local'
-          const collections = ['companies', 'projects', 'variations', 'conversions']
+          const collections = ['companies', 'projects', 'variations', 'conversions', 'experiments']
 
           const convertIds = (data) => {
             return data.map(item => {
