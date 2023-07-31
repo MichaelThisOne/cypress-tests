@@ -6,6 +6,7 @@
     "projectId": {
       "$oid": "64b5481b2fd32342c0a00dd0"
     },
-    "isActive": true
+    "isActive": true,
+    "activeStartDate": "2023-07-31T10:08:56.374Z"
   }
 ]
