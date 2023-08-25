@@ -46,6 +46,7 @@ module.exports = defineConfig({
             const variationViewCollection = db.collection("variation-views")
             const variationConversionCollection = db.collection("variation-conversions")
             const experimentCollection = db.collection("experiments")
+            const experimentRunCollection = db.collection("experiment-runs")
 
             await companyCollection.deleteMany({})
             await projectCollection.deleteMany({})
@@ -54,6 +55,7 @@ module.exports = defineConfig({
             await variationViewCollection.deleteMany({})
             await variationConversionCollection.deleteMany({})
             await experimentCollection.deleteMany({})
+            await experimentRunCollection.deleteMany({})
 
             return true
           } catch (error) {
@@ -89,13 +91,16 @@ module.exports = defineConfig({
             await connect()
           }
           const dbName = 'gro-local'
-          const collections = ['companies', 'projects', 'variations', 'conversions', 'experiments']
+          const collections = ['companies', 'projects', 'variations', 'conversions', 'experiments', 'experiment-runs']
 
           const convertIds = (data) => {
             return data.map(item => {
               for (key of Object.keys(item)) {
                 if (item?.[key]?.$oid) {
                   item[key] = new ObjectId(item[key].$oid)
+                }
+                if (item?.[key]?.$date) {
+                  item[key] = new Date(item[key].$date)
                 }
               }
 
@@ -114,6 +119,7 @@ module.exports = defineConfig({
               let data = JSON.parse(fileContent)
               // Convert any $oid strings into ObjectId instances
               data = convertIds(data)
+              console.log(data)
 
               // Insert JSON data into the respective collection
               const collection = db.collection(collectionName)
